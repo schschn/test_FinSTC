@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>read</title>
+</head>
+<body>
+    <table>
+            <tr>
+                <th>id</th>
+                <th>vintage</th>
+                <th>price</th>
+                <th>dealer_name</th>
+                <th>car_name</th>
+                <th>purchase_date</th>
+            </tr>
+            {% for i in data %}
+                <tr>
+                    <td> {{ i.id }} </td>
+                    <td> {{ i.vintage }} </td>
+                    <td> {{ i.price }} </td>
+                    <td> {{ i.dealer_name }} </td>
+                    <td> {{ i.car_name }} </td>
+                    <td> {{ i.purchase_date }} </td>
+                </tr>
+            {% endfor %}
+        <tr> <td><a href="{{url_for('html_create')}}" >create_html</a><td>
+        <td><a href="{{url_for('html_retrieve')}}" >html_retrieve</a><td>
+        <td><a href="{{url_for('html_update')}}" >update_html</a><td>
+        <td><a href="{{url_for('html_delete')}}" >delete_html</a><td></tr>
+    </table>
+    ----------------------------------------------------------------------------------------<br>
+    <a href="{{url_for('home')}}" >home</a><br>
+    > <b>r</b>etrieve-метод для получения данных <br>
+    > метод принимает два списка - cars и dealers, элементами которых являются выбранные пользователем машины <br>
+    и/или диллеры
+    <form method="post">
+       | выбрать имя/имена дилеров:<br>
+            {% for dealer in dealers %}
+                <input type="checkbox" name="dealers" value="{{ dealer }}"> {{ dealer }} <br>
+            {% endfor %}
+        <br>| выбрать название/я машин:<br>
+            {% for car in cars %}
+                <input type="checkbox" name="cars" value="{{ car }}"> {{ car }} <br>
+            {% endfor %}
+    <input type=submit value=read>
+    </form>
+</body>
+</html>

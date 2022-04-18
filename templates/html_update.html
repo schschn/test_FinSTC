@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>update</title>
+</head>
+<body>
+    <table>
+            <tr>
+                <th>id</th>
+                <th>vintage</th>
+                <th>price</th>
+                <th>dealer_name</th>
+                <th>car_name</th>
+                <th>purchase_date</th>
+            </tr>
+            {% for i in data %}
+                <tr>
+                    <td> {{ i.id }} </td>
+                    <td> {{ i.vintage }} </td>
+                    <td> {{ i.price }} </td>
+                    <td> {{ i.dealer_name }} </td>
+                    <td> {{ i.car_name }} </td>
+                    <td> {{ i.purchase_date }} </td>
+                </tr>
+            {% endfor %}
+        <tr> <td><a href="{{url_for('html_create')}}" >create_html</a><td>
+        <td><a href="{{url_for('html_retrieve')}}" >html_retrieve</a><td>
+        <td><a href="{{url_for('html_update')}}" >update_html</a><td>
+        <td><a href="{{url_for('html_delete')}}" >delete_html</a><td></tr>
+    </table>
+----------------------------------------------------------------------------------------<br>
+    <a href="{{url_for('home')}}" >home</a><br>
+    > <b>u</b>pdate/put-метод для изменения данных по id записи:
+    > метод изменит только указанные параметры
+    > id - номер записи, числовой обязательный параметр <br>
+    > vintage - винтажность автомобиля, булиевый параметр <br>
+    > price - цена автоомобиля, числовой параметр <br>
+    > dealer_name - имя продавца, текстовый параметр <br>
+    > car_name - название автомобиля, текстовый параметр <br>
+    > purchase_date - дата покупки автомобиля, дата в формате д.м.г. <br>
+    <form method="post">
+         <input type="hidden" name="_method" value="put" />
+            <table>
+                <tr>
+                     <td> id </td> <td><input type="number" name="id"></td>
+                </tr>
+                <tr>
+                     <td> vintage </td> <td><input type="checkbox" name="vintage" value="1"></td>
+                </tr>
+                <tr>
+                     <td> price </td> <td><input type="number" name="price"></td>
+                </tr>
+                <tr>
+                     <td> dealer_name </td> <td><input type="text" name="dealer_name"></td>
+                </tr>
+                <tr>
+                     <td> car_name </td> <td><input type="text" name="car_name"></td>
+                </tr>
+                <tr>
+                     <td> purchase_date </td> <td><input type="date" name="purchase_date"></td>
+                </tr>
+            </table>
+        <input type=submit value=update>
+        </form>
+</body>
+</html>
